@@ -1,5 +1,8 @@
 package gui;
 
+import data.GestorArtista;
+import data.GestorEvento;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -27,6 +30,18 @@ public class VentanaRegistroArtista extends JFrame {
             limpiarCampos();
             habilitarCampos();
             bAgregarArtista.setEnabled(true);
+        });
+
+        bAgregarArtista.addActionListener(e -> {
+            boolean artistaAgregado = new GestorArtista().registrarDato(obtenerDatosArtista(), "C:/Users/Lenovo/Desktop/artistas.txt");
+            if (artistaAgregado) {
+                limpiarCampos();
+                deshabilitarCampos();
+                bAgregarArtista.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "El artista ha sido agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error al agregar el artista.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         bVolver.addActionListener(e -> {
@@ -115,7 +130,7 @@ public class VentanaRegistroArtista extends JFrame {
         campoGeneroMusical.setText("");
     }
 
-    private String[] obtenerDatosCafe() {
+    private String[] obtenerDatosArtista() {
         String nombre = campoNombreArtista.getText();
         String fecha = campoGeneroMusical.getText();
         return new String[]{nombre, fecha};
