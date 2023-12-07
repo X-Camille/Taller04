@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Artista {
 
-	private Collection<EventoMusical> eventosMusicales;
+	private ArrayList<EventoMusical> eventosMusicales;
 	private String nombreArtistico;
 	private String generoMusical;
 
