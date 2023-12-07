@@ -10,3 +10,9 @@ Las principales funciones a implementar serán:
 - registrarArtista()
 - registrarAsistente()
 - venderEntradas()
+
+Atributos:
+Para el EventoMusical: nombre del evento,fecha,lugar y artistas
+Para el Artista: nombreArtistico y generoMusical
+Para el Asistente: contacto y preferenciaMusical
+Para la Entrada: evento, precio y disponibilidad

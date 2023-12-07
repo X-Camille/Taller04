@@ -1,5 +1,4 @@
 package gui;
-
 import model.EventoMusical;
 
 import javax.swing.*;
