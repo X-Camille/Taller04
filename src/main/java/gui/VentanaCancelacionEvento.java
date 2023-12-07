@@ -1,5 +1,6 @@
 package gui;
 
+import data.GestorEvento;
 import model.EventoMusical;
 
 import javax.swing.*;
@@ -42,8 +43,8 @@ public class VentanaCancelacionEvento extends JFrame {
         botonBuscar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String busqueda = campoBusqueda.getText();
-                /*ArrayList<Cafe> cafes = cafeteria.buscarCafesPorTamano(busqueda);
-                llenarTablaConDatos(cafes);*/
+                ArrayList<EventoMusical> eventos = new GestorEvento().buscarEventosPorNombre(busqueda, "C:/Users/Lenovo/Desktop/eventos.txt");
+                llenarTablaConDatos(eventos);
             }
         });
         gbc.gridx = 2;
@@ -97,13 +98,24 @@ public class VentanaCancelacionEvento extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int filaSeleccionada = table.getSelectedRow();
                 if (filaSeleccionada != -1) {
-                   /* EventoMusical eventoSeleccionado = cafeteria.getCafes().get(filaSeleccionada);
+                    // Obtener datos de la fila seleccionada
+                    String nombreEvento = (String) table.getValueAt(filaSeleccionada, 0);
+                    String fechaEvento = (String) table.getValueAt(filaSeleccionada, 1);
+                    String lugar = (String) table.getValueAt(filaSeleccionada, 2);
+                    String artistas = (String) table.getValueAt(filaSeleccionada, 3);
 
-                    // Llamar al método discontinuarCafe de Cafeteria para eliminar el café seleccionado
-                    cafeteria.discontinuarCafe(cafeSeleccionado);
+                    // Crear un objeto EventoMusical con los datos obtenidos
+                    EventoMusical eventoSeleccionado = new EventoMusical(nombreEvento, fechaEvento, lugar);
 
-                    // Refrescar la tabla después de eliminar el café
-                    llenarTablaConDatos(cafeteria.getCafes());*/
+                    // Eliminar el evento usando el GestorEvento
+                    new GestorEvento().cancelarEvento(eventoSeleccionado, "C:/Users/Lenovo/Desktop/eventos.txt");
+
+                    // Obtener de nuevo los eventos después de la eliminación
+                    String busqueda = campoBusqueda.getText();
+                    ArrayList<EventoMusical> eventos = new GestorEvento().buscarEventosPorNombre(busqueda, "C:/Users/Lenovo/Desktop/eventos.txt");
+
+                    // Actualizar la tabla con los datos actualizados después de la eliminación
+                    llenarTablaConDatos(eventos);
                 }
             }
         });

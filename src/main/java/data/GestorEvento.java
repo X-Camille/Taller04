@@ -4,6 +4,7 @@ import model.EventoMusical;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GestorEvento {
     private String[] lineas;
@@ -30,6 +31,17 @@ public class GestorEvento {
         return eventos;
     }
 
+    public ArrayList<EventoMusical> buscarEventosPorNombre(String busqueda, String direccionArchivo){
+        ArrayList<EventoMusical> eventos = leerArchivoEventos(direccionArchivo);
+        ArrayList<EventoMusical> eventosEncontrados = new ArrayList<>(){};
+        for (EventoMusical evento : eventos) {
+            if (Objects.equals(evento.getNombreEvento(), busqueda)) {
+                eventosEncontrados.add(evento);
+            }
+        }
+        return eventosEncontrados;
+    }
+
     public boolean registrarDato(String[] datosEvento, String direccionArchivo){
         boolean lineaVacia = false;
         try {
@@ -52,4 +64,21 @@ public class GestorEvento {
         }
         return false;
     }
+
+    public void cancelarEvento(EventoMusical eventoEliminado, String direccionArchivo) {
+        ArrayList<EventoMusical> eventos = leerArchivoEventos(direccionArchivo);
+
+        // Eliminar el evento correspondiente
+        eventos.removeIf(evento -> evento.equals(eventoEliminado));
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(direccionArchivo))) {
+            for (EventoMusical evento : eventos) {
+                bw.write(evento.toString());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al cancelar el evento: " + e.getMessage());
+        }
+    }
+
 }
