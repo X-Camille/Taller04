@@ -12,7 +12,7 @@ Las principales funciones a implementar serán:
 - venderEntradas()
 
 Atributos:
-Para el EventoMusical: nombre del evento,fecha,lugar y artistas
-Para el Artista: nombreArtistico y generoMusical
-Para el Asistente: contacto y preferenciaMusical
-Para la Entrada: evento, precio y disponibilidad
+Para el EventoMusical: nombreEvento,fechaEvento,lugar, artistasAsociados (arrayList) y entradas (arrayList)
+Para el Artista: nombreArtistico y generoMusical; arrayList de eventosMusicales
+Para el Asistente: contacto y preferenciaMusical; entrada
+Para la Entrada: precio y disponibilidad; asistente
