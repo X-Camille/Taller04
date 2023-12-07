@@ -1,6 +1,8 @@
 package gui;
 
+import data.GestorAsistente;
 import data.GestorEvento;
+import model.Asistente;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -32,15 +34,15 @@ public class VentanaRegistroAsistente extends JFrame {
         });
 
         bAgregarAsistente.addActionListener(e -> {
-            /*boolean eventoAgregado = new GestorEvento().registrarDato(obtenerDatosEvento(), "C:/Users/Lenovo/Desktop/eventos.txt");
-            if (eventoAgregado) {
+            boolean asistenteAgregado = new GestorAsistente().registrarDato(obtenerDatosEvento(), "C:/Users/Lenovo/Desktop/asistentes.txt");
+            if (asistenteAgregado) {
                 limpiarCampos();
                 deshabilitarCampos();
-                bAgregarEvento.setEnabled(false);
-                JOptionPane.showMessageDialog(this, "El evento ha sido agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                bAgregarAsistente.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "El asistente ha sido agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Ha ocurrido un error al agregar el evento.", "Error", JOptionPane.ERROR_MESSAGE);
-            }*/
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error al agregar el asistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         bVolver.addActionListener(e -> {

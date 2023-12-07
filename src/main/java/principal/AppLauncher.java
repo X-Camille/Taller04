@@ -7,5 +7,4 @@ public class AppLauncher {
         VentanaMenu menu = new VentanaMenu();
         menu.mostrarInterfaz();
     }
-
 }
