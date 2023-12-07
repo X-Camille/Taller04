@@ -1,4 +1,5 @@
 package gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -94,11 +95,12 @@ public class VentanaMenu extends JFrame implements ActionListener {
             new VentanaCancelacionEvento().mostrarInterfaz();
         } else if (e.getSource() == bRegistrarArtista) {
             dispose();
+            new VentanaRegistroArtista().mostrarInterfaz();
         } else if (e.getSource() == bRegistrarAsistente) {
             dispose();
+            new VentanaRegistroAsistente().mostrarInterfaz();
         } else if (e.getSource() == bVenderEntrada) {
             dispose();
         }
     }
-
 }

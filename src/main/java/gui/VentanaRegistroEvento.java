@@ -1,4 +1,7 @@
 package gui;
+
+import data.GestorEvento;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -31,19 +34,18 @@ public class VentanaRegistroEvento extends JFrame {
             habilitarCampos();
             bAgregarEvento.setEnabled(true);
         });
-/*
+
         bAgregarEvento.addActionListener(e -> {
-            CafeteriaController controller = new CafeteriaController(this.cafeteria);
-            boolean cafeAgregado = controller.recibirDatosCafe(obtenerDatosCafe());
-            if (cafeAgregado) {
+            boolean eventoAgregado = new GestorEvento().registrarDato(obtenerDatosEvento(), "C:/Users/Lenovo/Desktop/eventos.txt");
+            if (eventoAgregado) {
                 limpiarCampos();
                 deshabilitarCampos();
-                bAgregarCafe.setEnabled(false);
-                JOptionPane.showMessageDialog(this, "El café ha sido agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                bAgregarEvento.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "El evento ha sido agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Ha ocurrido un error al agregar el café.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error al agregar el evento.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        });*/
+        });
 
         bVolver.addActionListener(e -> {
             dispose();
@@ -143,7 +145,7 @@ public class VentanaRegistroEvento extends JFrame {
         campoArtistas.setText("");
     }
 
-    private String[] obtenerDatosCafe() {
+    private String[] obtenerDatosEvento() {
         String nombre = campoNombreEvento.getText();
         String fecha = campoFechaEvento.getText();
         String lugar = campoLugar.getText();

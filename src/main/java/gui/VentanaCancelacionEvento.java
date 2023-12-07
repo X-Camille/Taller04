@@ -1,4 +1,5 @@
 package gui;
+
 import model.EventoMusical;
 
 import javax.swing.*;
@@ -118,7 +119,7 @@ public class VentanaCancelacionEvento extends JFrame {
         Object[][] datos = new Object[eventosMusicales.size()][columnas.length];
 
         for (int i = 0; i < eventosMusicales.size(); i++) {
-            EventoMusical eventoMusical = eventosMusicales.get(i);
+           EventoMusical eventoMusical = eventosMusicales.get(i);
             datos[i][0] = eventoMusical.getNombreEvento();
             datos[i][1] = eventoMusical.getFechaEvento();
             datos[i][2] = eventoMusical.getLugar();
